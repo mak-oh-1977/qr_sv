@@ -1,0 +1,31 @@
+﻿
+.sunday .ui-state-default {
+  color: red;
+}
+.saturday .ui-state-default {
+  color: blue;
+}
+.holiday .ui-state-default {
+  color: red;
+}
+
+.ui-datepicker-title > select {
+	height: 24px;
+}
+
+.ui-datepicker-trigger {
+	width:auto;
+	height:100%;
+    vertical-align: middle;
+    margin-left: 2px;
+    border: 0px;
+	cursor:pointer;
+}
+
+.ui-datepicker {
+	z-index:2000!important;
+}
+
+.ui-datepicker select.ui-datepicker-year , .ui-datepicker select.ui-datepicker-month {
+	width: 40%;
+}

@@ -1,0 +1,52 @@
+﻿/* =========================================================*/
+/*	ナビゲーションバー定義 */
+/* ======================================================== */
+
+
+.navbar {
+	background-color:#3636A1;
+	position:fixed;
+	z-index:1030;
+	width:100%;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .3);
+}
+
+.nav-left {
+	float:left;
+	overflow:hidden;
+	list-style-type:none;
+	margin-left:20px;
+}
+
+.nav-right {
+	margin-right:30px;
+	float:right;
+	list-style-type:none;
+	color:#ffffff;
+}
+
+/*-----------------------------------------------------------------
+	ボタン
+		保存等のボタンは共通制御
+-----------------------------------------------------------------*/
+
+
+
+.navbar ul li {
+	float:left;
+	margin-left:0;
+	padding-left:0;
+}
+
+.dropdown-menu li {
+	list-style-type:none;
+	width:150px;
+}
+
+#db_msg {
+	padding:10px 5px;
+	margin-left:10px;
+}
+
+
+

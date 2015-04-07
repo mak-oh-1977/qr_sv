@@ -1,0 +1,598 @@
+﻿/* =========================================================*/
+/*	管理サイトメニューページ定義  （コモン）	    */
+/* ======================================================== */
+
+body {
+	background-image:url("../img/back.png");
+	line-height:120%;
+	font-family:'Hiragino Kaku Gothic ProN',
+		Meiryo, 'MS PGothic', sans-serif;
+}
+
+h1 {
+	color:#130760;
+	font-size:30px;
+	padding:5px 0 20px 0;
+	font-family: 'HGMaruGothicMPRO';
+}
+h2 {
+	color:#130760;
+	font-size:20px;
+	padding:5px 0 5px 0;
+	font-family: 'HGMaruGothicMPRO';
+	text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+
+/*-----------------------------------------------------------------
+	ボタンアイコン定義
+-----------------------------------------------------------------*/
+
+[class^="icon-"],[class*=" icon-"]{
+	display:inline-block;
+	width:14px;
+	height:14px;
+	*margin-right:.3em;
+	line-height:14px;
+	vertical-align:text-top;
+	background-image:url("../img/glyphicons-halflings.png");
+	background-position:14px 14px;
+	background-repeat:no-repeat;
+	margin-top:1px;
+}
+
+.icon-white {
+	background-image: url("../img/glyphicons-halflings-white.png");
+}
+
+.icon-home {
+	background-position: 0 -24px;
+}
+.icon-user {
+	background-position: -168px 0;
+}
+
+.icon-hdd {
+	background-position: 0 -144px;
+}
+
+.icon-envelope {
+	background-position: -72px 0;
+}
+
+.icon-arrow-left {
+	background-position: -240px -96px;
+}
+
+.icon-pencil {
+	background-position: 0 -72px;
+}
+
+.icon-check {
+	background-position: -288px 0px;
+}
+
+.icon-plus {
+  background-position: -408px -96px;
+}
+
+.icon-remove {
+  background-position: -312px 0;
+}
+
+.icon-refine {
+  background-position: -408px -144px;
+}
+
+
+/*-----------------------------------------------------------------
+	グローバルナビ
+-----------------------------------------------------------------*/
+.g_navi,.g_title {
+	display:block;
+	text-align:center;
+	text-decoration:none;
+	float:left;
+	padding-top:10px;
+	padding-bottom:10px;
+	width:149px;
+	color:#EAEAEA;
+	font-weight:900;
+	background-color:#3636A1;
+	font-family: 'HGMaruGothicMPRO';
+}
+
+.g_navi:hover {
+	cursor:pointer;
+	background-color: #4E4EE5;
+	color: #FFF607;
+	outline: none;
+	-webkit-transition: 0.25s;
+	-moz-transition: 0.25s;
+	-o-transition: 0.25s;
+	transition: 0.25s;
+	-webkit-backface-visibility: hidden;
+
+	text-shadow:
+	  0 0  2px #FEF61F,
+	  0 0  4px #FCFAB5;
+
+}
+
+.menu_btn {
+	cursor:pointer;
+}
+
+dl.dropdown-menu {
+	position:absolute;
+	margin:39px 0 0 0;
+	padding:0px;
+	width:149px;
+	background-color:#1A8E02;
+
+	-moz-box-shadow: 2px 2px 5px #aeaec2;
+	-webkit-box-shadow: 2px 2px 5px #aeaec2;
+	box-shadow: 2px 2px 5px #aeaec2;
+
+}
+
+.dropdown-menu, .dropdown-menu li, .dropdown-menu li a {
+	-moz-border-radius: 0px 0px 5px 5px;
+	-webkit-border-radius: 0px 0px 5px 5px;
+	border-radius: 0px 0px 5px 5px;
+}
+
+
+/*-----------------------------------------------------------------
+	見出し表示
+-----------------------------------------------------------------*/
+.hero-unit {
+	width: auto;
+	z-index:0;
+	background-color:#d1f7ff;
+	margin: 0 50px 10px 50px;
+	padding: 50px 40px 10px;
+	position:relative;
+	border: 0px solid;
+	-webkit-border-radius: 20px;
+	   -moz-border-radius: 20px;
+	        border-radius: 20px;
+
+	box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+	background-image: -moz-linear-gradient(top, #e8fffd, #d1f7ff);
+	background-image: -ms-linear-gradient(top, #e8fffd, #d1f7ff);
+	background-image: -webkit-linear-gradient(top, #e8fffd, #d1f7ff);
+	background-image: linear-gradient(top, #e8fffd, #d1f7ff);
+
+}
+
+.hero-unit th {
+	vertical-align:middle;
+	padding: 5px;
+}
+
+.hero-unit span.title {
+	font-family: 'HGMaruGothicMPRO';
+	font-size:1.5em;
+	font-weight:800;
+	vertical-align:sub;
+	color:#3636A1;
+}
+.hero-unit img.title {
+	vertical-align:middle;
+}
+.hero-unit img.kind {
+	float:right;
+}
+
+th {
+	color:#596B82;
+	font-size:0.95em;
+	font-weight:500;
+	letter-spacing:0.1em;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+/*-----------------------------------------------------------------
+	レイアウト用
+-----------------------------------------------------------------*/
+div.clear {
+	clear:both;
+	height: 5px;
+}
+
+/*-----------------------------------------------------------------
+	テーブル表示
+-----------------------------------------------------------------*/
+table.data-list {
+	border: none;
+	background-color:#fdfdfd;
+
+	font-size:16px;
+	width: 100%;
+	margin:0 0 10px 0;
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+	border: 1px #efefef solid ;
+}
+
+table.data-list th {
+	border: 1px #f7f7f7 solid ;
+/*	background-color:#C9DEFC;*/
+	text-align:center;
+	vertical-align:middle;
+
+	padding: 5px;
+	box-shadow: 0 0 20px rgba(68, 105, 153, .1) inset;
+	background-image: -moz-linear-gradient(top, #e8fffd, #d1f7ff);
+	background-image: -ms-linear-gradient(top, #e8fffd, #d1f7ff);
+	background-image: -webkit-linear-gradient(top, #e8fffd, #d1f7ff);
+	background-image: linear-gradient(top, #e8fffd, #d1f7ff);
+
+	border-color: #e0e0e0 #f0f0f0;
+
+}
+
+div.table-box {
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, .15);
+}
+
+table.data-list td {
+	color:#3C434F;
+/*	border: 1px #e6ebed solid ;*/
+	border: 1px #efefef solid ;
+	padding: 2px;
+	vertical-align:middle;
+	font-size: 0.9em;
+	font-weight:500;
+	border-color: #d0d0d0 #f0f0f0;
+}
+
+
+/* テーブルセルテキスト右寄せ */
+td.td-r {
+	text-align:right;
+}
+/* テーブルセルテキスト中央 */
+td.td-c {
+	text-align:center;
+}
+
+td.stat_col span{
+	font-size:0.8em;
+}
+
+/* テーブル行ハイライト */
+table.data-list tr:hover td{
+	background-color:#FFE9D6;
+}
+
+/*-----------------------------------------------------------------
+	レイアウト
+-----------------------------------------------------------------*/
+.row-fluid {
+	width:auto;
+	overflow:hidden;
+	padding:5px 20px;
+}
+
+#main {
+	width:100%;
+	overflow:hidden;
+	padding:5px 0px;
+}
+
+.span2 {
+	width: 18%;
+	float:left;
+	margin: 5px;
+}
+.span3 {
+	width: 28%;
+	float:left;
+	margin: 5px;
+}
+
+.span8 {
+	width: 78%;
+	margin: 5px;
+}
+
+.span6 {
+	width: 58%;
+	margin: 5px;
+}
+.span7 {
+	width: 68%;
+	margin: 5px;
+}
+
+.span8 {
+	width: 78%;
+	margin: 5px;
+}
+.span9 {
+	width: 88%;
+	margin: 5px;
+}
+
+.span4 {
+	width: 38%;
+	margin: 5px;
+}
+.span100 {
+	width: 100%;
+	float:left;
+	margin: 5px;
+}
+
+.spanCenter{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/*-----------------------------------------------------------------
+	入力項目
+-----------------------------------------------------------------*/
+textarea, input[type="text"], input[type="password"], select {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	color:#111;
+	border: 1px solid rgba(0, 0, 0, .2) ;
+	-webkit-border-radius: 4px;
+	   -moz-border-radius: 4px;
+	        border-radius: 4px;
+	font-size:16px;
+	box-shadow: -1px 1px 2px rgba(0, 0, 0, .1) inset, -1px 1px 0 rgba(255,255,255, .8);
+	padding: 4px;
+}
+
+
+
+
+/*-----------------------------------------------------------------
+	ボタン
+-----------------------------------------------------------------*/
+.toolbtn {
+	width:120px;
+	height:28px;
+	padding:2px 0px;
+	margin: 0 4px 0 0;
+	text-align:center;
+	color:white;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	vertical-align:middle;
+	cursor:pointer;
+	border:1px solid rgba(0, 0, 0, .1);
+	box-shadow: -1px 1px 0 rgba(0, 0, 0, .05), -1px 1px 0 rgba(255,255,255, .5) inset;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+	font-weight: 600;
+}
+
+
+/*-----------------------------------------------------------------
+
+-----------------------------------------------------------------*/
+.btn_green {
+	background-color: #16BA60;
+	background-image: linear-gradient(bottom, #16BA60 60%, #1BE576 90%);
+	background-image: -o-linear-gradient(bottom, #16BA60 60%, #1BE576 90%);
+	background-image: -moz-linear-gradient(bottom, #16BA60 60%, #1BE576 90%);
+	background-image: -webkit-linear-gradient(bottom, #16BA60 60%, #1BE576 90%);
+	background-image: -ms-linear-gradient(bottom, #16BA60 60%, #1BE576 90%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.60, #16BA60),
+		color-stop(0.90, #1BE576)
+	);
+}
+
+.btn_green:hover {
+	background-color: #1EFF83;
+	background-image: none;
+	color: #FEF61F;
+}
+
+/*-----------------------------------------------------------------
+
+-----------------------------------------------------------------*/
+.btn_yellow {
+	background-color: #FFF399;
+	background-image: linear-gradient(bottom, #FFF399 60%, #ffff88 90%);
+	background-image: -o-linear-gradient(bottom, #FFF399 60%, #ffff88 90%);
+	background-image: -moz-linear-gradient(bottom, #FFF399 60%, #ffff88 90%);
+	background-image: -webkit-linear-gradient(bottom, #FFF399 60%, #ffff88 90%);
+	background-image: -ms-linear-gradient(bottom, #FFF399 60%, #ffff88 90%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.60, #FFF399),
+		color-stop(0.90, #ffff88)
+	);
+	color: #222222;
+}
+
+.btn_yellow:hover {
+	background-color: #ffff88;
+	background-image: none;
+	color: #222222;
+}
+
+
+/*-----------------------------------------------------------------
+
+-----------------------------------------------------------------*/
+.btn_blue {
+	background-color: rgb(45,79,250);
+	background-image: linear-gradient(bottom, rgb(45,79,250) 60%, rgb(35,179,232) 90%);
+	background-image: -o-linear-gradient(bottom, rgb(45,79,250) 60%, rgb(35,179,232) 90%);
+	background-image: -moz-linear-gradient(bottom, rgb(45,79,250) 60%, rgb(35,179,232) 90%);
+	background-image: -webkit-linear-gradient(bottom, rgb(45,79,250) 60%, rgb(35,179,232) 90%);
+	background-image: -ms-linear-gradient(bottom, rgb(45,79,250) 60%, rgb(35,179,232) 90%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.09, rgb(45,79,250)),
+		color-stop(0.52, rgb(45,79,250)),
+		color-stop(0.82, rgb(35,179,232))
+	);
+}
+
+.btn_blue:hover {
+	background-color: #7782F9;
+	background-image: none;
+	color: #FEF61F;
+}
+
+/*-----------------------------------------------------------------
+
+-----------------------------------------------------------------*/
+.btn_orange {
+	background-color: rgb(245,163,0);
+	background-image: linear-gradient(bottom, rgb(245,163,0) 60%, rgb(255,243,181) 90%);
+	background-image: -o-linear-gradient(bottom, rgb(245,163,0) 60%, rgb(255,243,181) 90%);
+	background-image: -moz-linear-gradient(bottom, rgb(245,163,0) 60%, rgb(255,243,181) 90%);
+	background-image: -webkit-linear-gradient(bottom, rgb(245,163,0) 60%, rgb(255,243,181) 90%);
+	background-image: -ms-linear-gradient(bottom, rgb(245,163,0) 60%, rgb(255,243,181) 90%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.6, rgb(245,163,0)),
+		color-stop(0.89, rgb(255,243,181))
+	);
+}
+
+.btn_orange:hover {
+	background-color: #F7E596;
+	background-image: none;
+	color: #FEF61F;
+}
+
+/*-----------------------------------------------------------------
+
+-----------------------------------------------------------------*/
+.btn_red {
+	background-color: #F50000;
+	background-image: linear-gradient(bottom, #F50000 70%, #FFB5B5 89%);
+	background-image: -o-linear-gradient(bottom, #F50000 70%, #FFB5B5 89%);
+	background-image: -moz-linear-gradient(bottom, #F50000 70%, #FFB5B5 89%);
+	background-image: -webkit-linear-gradient(bottom, #F50000 70%, #FFB5B5 89%);
+	background-image: -ms-linear-gradient(bottom, #F50000 70%, #FFB5B5 89%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.7, #F50000),
+		color-stop(0.89, #FFB5B5)
+	);
+}
+
+.btn_red:hover {
+	background-color: #ffbaba;
+	background-image: none;
+	color: #FEF61F;
+}
+
+/*-----------------------------------------------------------------
+
+-----------------------------------------------------------------*/
+.btn_gray {
+	color: #00356B;
+	background-color: #BABABA;
+	background-image: linear-gradient(bottom, #BABABA 70%, #D1D1D1 89%);
+	background-image: -o-linear-gradient(bottom, #BABABA 70%, #D1D1D1 89%);
+	background-image: -moz-linear-gradient(bottom, #BABABA 70%, #D1D1D1 89%);
+	background-image: -webkit-linear-gradient(bottom, #BABABA 70%, #D1D1D1 89%);
+	background-image: -ms-linear-gradient(bottom, #BABABA 70%, #D1D1D1 89%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.7, #BABABA),
+		color-stop(0.89, #D1D1D1)
+	);
+}
+
+.btn_gray:hover {
+	background-color: #CECECE;
+	background-image: none;
+	color: #FEF61F;
+}
+
+
+
+
+/*===============================
+状態カラー定義
+=================================*/
+.stat_col[status="0"] {
+	background-color: #ffffff;
+}
+
+.stat_col[status="10"] {
+	background-color: #A8A8A8;
+}
+.stat_col[status="11"] {
+	background-color: #A8A8A8;
+}
+.stat_col[status="12"] {
+	background-color: #E2E2E2;
+}
+.stat_col[status="13"] {
+	background-color: #E2E2E2;
+}
+.stat_col[status="4"] {
+	background-color: #FFF399;
+}
+.stat_col[status="3"] {
+	background-color: #8E98FF;
+}
+.stat_col[status="2"] {
+	background-color: #FF5D51;
+}
+
+td.stat_col {
+	color:#CCD5E0;
+	text-shadow: 0px 0px 2px rgba(0,0,0,0.1);
+}
+
+
+/*===============================
+共通で使いそうなもの
+=================================*/
+
+/*===============================
+一覧内ボタン
+=================================*/
+td button.reset {
+	float:left;
+}
+
+td button.erase {
+	float:right;
+}
+
+
+td button.list_btn {
+	width:30px;
+	height:20px;
+	border-radius:5px;
+	cursor:pointer;
+	border:1px solid rgba(0, 0, 0, .1);
+	box-shadow: -1px 1px 0 rgba(0, 0, 0, .05), -1px 1px 0 rgba(255,255,255, .5) inset;
+}
+
+
+img#processingImg {
+	vertical-align:middle;
+}

@@ -1,0 +1,57 @@
+﻿/* =========================================================*/
+/*	管理サイトメニューページ定義  (職員マスタ)	    */
+/* ======================================================== */
+
+
+div.upper_box {
+	height:40px;
+	vertical-align:top:
+}
+
+#s_list tr th:nth-child(1){
+	width:150px;
+}
+#s_list tr th:nth-child(2){
+	width:150px;
+}
+#s_list tr th:nth-child(3){
+	width:200px;
+}
+
+#s_list tr:hover td{
+	background-color:#FFE9D6;
+	cursor:pointer;
+}
+
+#staff_dlg table , #staff_dlg table td{
+	background-color:transparent;
+	border:none;
+	padding: 2px 2px 2px 2px;
+}
+
+#staff_dlg p {
+	margin:0 0 20px 0;
+}
+
+#staff_dlg #code, #staff_dlg #password {
+	width: 40%;
+	ime-mode:disabled;
+}
+#staff_dlg #name {
+	width: 60%;
+}
+#staff_dlg #memo {
+	width: 100%;
+}
+
+#staff_dlg #tb_blank {
+	height:10px;
+}
+
+#staff_dlg input.kobetu{
+	margin: 0 0 0 20px;
+}
+
+#staff_dlg table {
+	width: 80%;
+}
