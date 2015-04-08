@@ -1,6 +1,0 @@
-{
-  "require": {
-    "ext-pdo_sqlite": "*"
-    "ext-mbstring": "*"
-  }
-}
