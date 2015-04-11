@@ -36,17 +36,12 @@ $(function(){
 					var row = ret['rows'][i];
 
 					var r = $('<tr>', {	
-						staff_id: row['id'],
 						code: row['code'],
-						name: row['name'],
-						password: row['password'],
-						type: row['type'],
-						memo: row['memo'],
 					});
 
-					$('<td>', {text: row['code']})
+					$('<td>', {text: row['code']}).append('<button class="list_btn qr">QR</button>')
 							.appendTo(r);
-					$('<td>', {text: row['name']})
+					$('<td>', {text: row['status']})
 							.appendTo(r);
 
 					$('#s_list tbody').append(r);
@@ -84,7 +79,7 @@ $(function(){
 			buttons:{
 				"OK":function(){
 					if ($('#code').val().match(/[^0-9A-Za-z]+/)){
-						alertDlg("入力エラー", "スタッフコードは半角英数のみです。");
+						alertDlg("入力エラー", "コードは半角英数のみです。");
 						return;
 					}
 
@@ -123,91 +118,27 @@ $(function(){
 	//
 	//	利用者情報変更
 	//
-	$(document).on("click", '#s_list tbody tr', function() {
+	$(document).on("click", '#s_list button', function() {
 
-		var tr = $(this);
-		$('#staff_dlg #staff_id').val($(tr).attr('staff_id'));
-		$('#staff_dlg #code').val($(tr).attr('code'));
-		$('#staff_dlg #password').val($(tr).attr('password'));
-		$('#staff_dlg #name').val($(tr).attr('name'));
-		$('#staff_dlg #memo').val($(tr).attr('memo'));
-		$('#staff_dlg input[type=checkbox]').prop('checked', false);
-		$('#staff_dlg input[type=checkbox]').removeAttr('disabled');
+		var tr = $(this).closest('tr');
+		var code = $(tr).attr('code');
 
-		if ($(tr).attr('type') & 0x1)
-			$('#chk_1').prop('checked', true);
-		if ($(tr).attr('type') & 0x10)
-			$('#chk_2').prop('checked', true);
-		if ($(tr).attr('type') & 0x20)
-			$('#chk_3').prop('checked', true);
-		if ($(tr).attr('type') & 0x40)
-			$('#chk_4').prop('checked', true);
+		var src = encodeURIComponent(location.href + "index.php?x=qr&ctrl=read&code=" + code);
+		var dlg = $('<div/>', {title:'QRコード'})
+			.append($('<img/>', {src:"http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=" + src}));
+			
+		$(dlg).appendTo(document.body);
 
-		$("#staff_dlg").dialog({
-			title:'スタッフ変更',
+
+		$(dlg).dialog({
 			autoOpen:true,
 			modal:true,
-			width:600,
-			height:400,
+			width:400,
+			height:350,
 			buttons:{
 				"OK":function(){
-					if ($('#code').val().match(/[^0-9A-Za-z]+/)){
-						alertDlg("入力エラー", "スタッフコードは半角英数のみです。");
-						return;
-					}
-
-					var type = 0;
-					var chkbox = $('#staff_dlg :checkbox');
-					for(var i = 0; i < $(chkbox).length; i++)
-					{
-						var a = $(chkbox).eq(i);
-						if($(a).prop('checked'))
-						{
-							type |= parseInt($(a).attr('v'));
-						}
-					}
-
-					if (type === 0){
-						alertDlg("入力エラー", "いずれかのアクセス権限を選択してください");
-						return;
-					}
-
-					var param = { 
-						x:'staff', 
-						ctrl:'edit',
-						staff_id:$('#staff_dlg #staff_id').val(),
-						code:$('#staff_dlg #code').val(),
-						password:$('#staff_dlg #password').val(),
-						name:$('#staff_dlg #name').val(),
-						memo:$('#staff_dlg #memo').val(),
-						type:type,
-					};
-
-					DbAccess('#db_msg', param, 
-						function(ret){
-							$('#staff_dlg').dialog("destroy");
-							updateStaffList();
-						},
-						function(ret){
-							if (ret['info']['1'] == "1062")
-							{
-								alertDlg("エラー", "スタッフコードが重複しています");
-							}
-							else
-							{
-								alertDlg("エラー", ret['info']);
-							}
-						}
-					);
-				},
-				"削除":function(){ 
-					$(this).dialog("destroy"); 
-					deleteStaff(
-							$('#staff_dlg #staff_id').val(), 
-							$('#staff_dlg #name').val());
-				},
-				"キャンセル":function(){ 
-					$(this).dialog("destroy"); 
+					$(this).dialog("close");
+					$(this).remove();
 				},
 			}
 		});
