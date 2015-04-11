@@ -11,7 +11,7 @@ class Controller {
 
 		$cmd = Controller::getTargetName($target);
 
-
+/*
 		session_start();
 		if ($target != APP_DEFAULT_ACTION)
 		{
@@ -22,7 +22,7 @@ class Controller {
 
 			}
 		}
-
+*/
 		switch($cmd){
 			case 'x':
 	//error_log("AjaxDispatch(" . $target . ")\n", 3, '/var/tmp/hms.log');

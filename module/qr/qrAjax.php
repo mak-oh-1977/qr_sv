@@ -7,8 +7,8 @@
 		function dispatch(&$context){
 			// mysqlpassAction の処理を記述
 
-			if (isset($_POST["ctrl"]))
-				$ctrl = $_POST["ctrl"];
+			if (isset($_REQUEST["ctrl"]))
+				$ctrl = $_REQUEST["ctrl"];
 
 			switch($ctrl)
 			{
@@ -29,12 +29,15 @@
 					$this->delete($_POST['staff_id']);
 					break;
 
-				case 'raad':
-					
+				case 'read':
+					$this->read($_REQUEST['code']);
+
+					$res = array('res' => 'OK');
+					$this->SendResponse($res);
+
 					break;
 
 				default:
-					$this->SendResponse(['res':'default']);
 					break;
 			}
 		}
@@ -146,6 +149,35 @@ delete from staff where id = ?
 SQL_END;
 
 			$res = $dbObj->execute($sql, array($_POST['staff_id']));
+			if ($res['res'] == "NG")
+			{
+				$this->SendResponse($res);
+				return ;
+			}
+
+			$dbObj->commit();
+
+			$this->SendResponse($res);
+
+			return ;
+		}
+
+		//////////////////////////////////////////////////////////////////////////
+		//
+		//
+		//
+		function read($code)
+		{
+			$dbObj = new dbAccess();
+			$dbObj->open();
+
+			$dbObj->beginTransaction();
+
+			$sql = <<<SQL_END
+update qr set status=1 where code=?
+SQL_END;
+
+			$res = $dbObj->execute($sql, array($code));
 			if ($res['res'] == "NG")
 			{
 				$this->SendResponse($res);
