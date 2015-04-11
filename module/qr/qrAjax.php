@@ -29,8 +29,12 @@
 					$this->delete($_POST['staff_id']);
 					break;
 
+				case 'raad':
+					
+					break;
 
 				default:
+					$this->SendResponse(['res':'default']);
 					break;
 			}
 		}
