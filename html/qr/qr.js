@@ -112,6 +112,28 @@ $(function(){
 	//
 	//**	テーブルクリック
 	//
+	//////////////////////////////////////////////////////////////////////////
+	//
+	//	利用者情報変更
+	//
+	$(document).on("click", '#s_list tr', function() {
+
+		var param = { 
+			x:'qr', 
+			ctrl:'reset',
+			code:$(tr).attr('code'),
+		};
+
+		DbAccess('#db_msg', param, 
+			function(ret){
+				updateList();
+			},
+			function(ret){
+				alertDlg("エラー", ret['info']);
+			}
+
+		);
+	});
 
 
 	//////////////////////////////////////////////////////////////////////////
@@ -139,6 +161,7 @@ $(function(){
 				"OK":function(){
 					$(this).dialog("close");
 					$(this).remove();
+					updateList();
 				},
 			}
 		});
@@ -146,47 +169,6 @@ $(function(){
 	});
 
 
-	//////////////////////////////////////////////////////////////////////////
-	//
-	//	利用者削除
-	//
-	function deleteStaff(id, name){
-
-		var dlg = $('<div/>', {title:'利用者削除確認'})
-			.append($('<p/>', {text:name + 'を削除しますか？', 'class':'summary'}));
-		$(dlg).appendTo(document.body);
-
-
-		$(dlg).dialog({
-			autoOpen:true,
-			modal:true,
-			width:450,
-			height:220,
-			buttons:{
-				"はい":function(){
-					var dlg = $(this);
-
-					var param = { 
-						x:'staff', 
-						ctrl:'del',
-						staff_id:id,
-					};
-
-					DbAccess('#db_msg', param, 
-						function(ret){
-							$(dlg).dialog("close");
-							$(dlg).remove();
-							updateStaffList();
-						}
-					);
-				},
-				"いいえ":function(){
-					$(this).dialog("close");
-					$(this).remove();
-				}
-			}
-		});
-	}
 
 	//------------------------------------------------------------------------
 	//

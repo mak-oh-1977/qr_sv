@@ -29,6 +29,7 @@
 
 	<div class="hero-unit">
 		<h2>QRコードデモ</h2>
+		<p><a href="app/SampleQR.apk">アプリのインストール</a></p>
 	</div>
 		
 	<div class="row-fluid">

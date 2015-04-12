@@ -21,12 +21,9 @@
 					$this->add();
 					break;
 
-				case 'edit':
-					$this->edit();
-					break;
 
-				case 'del':
-					$this->delete($_POST['staff_id']);
+				case 'reset':
+					$this->reset($_REQUEST['code']);
 					break;
 
 				case 'read':
@@ -56,7 +53,14 @@
 			$dbObj->open();
 
 			$sql = <<<SQL_END
-select * from qr 
+select 
+	code,
+	case status
+		when 0 then '読んでません'
+		when 1 then '読みました'
+		else '???'
+	end as status
+from qr 
 SQL_END;
 			$res = $dbObj->selectData($sql);
 
@@ -101,7 +105,7 @@ SQL_END;
 		//
 		//
 		//
-		function edit()
+		function reset($code)
 		{
 			$dbObj = new dbAccess();
 			$dbObj->open();
@@ -109,46 +113,10 @@ SQL_END;
 			$dbObj->beginTransaction();
 
 			$sql = <<<SQL_END
-update staff set code=?, name=?, password=?, type=?, memo=? where id=?
+update qr set status = 0 where code=?
 SQL_END;
 
-			$param = array(
-				$_POST['code'],
-				$_POST['name'],
-				$_POST['password'],
-				$_POST['type'],
-				$_POST['memo'],
-				$_POST['staff_id']);
-
-			$res = $dbObj->execute($sql, $param);
-			if ($res['res'] == "NG")
-			{
-				$this->SendResponse($res);
-				return ;
-			}
-
-			$dbObj->commit();
-
-			$this->SendResponse($res);
-
-			return ;
-		}
-		//////////////////////////////////////////////////////////////////////////
-		//
-		//
-		//
-		function delete($id)
-		{
-			$dbObj = new dbAccess();
-			$dbObj->open();
-
-			$dbObj->beginTransaction();
-
-			$sql = <<<SQL_END
-delete from staff where id = ?
-SQL_END;
-
-			$res = $dbObj->execute($sql, array($_POST['staff_id']));
+			$res = $dbObj->execute($sql, array($code));
 			if ($res['res'] == "NG")
 			{
 				$this->SendResponse($res);
