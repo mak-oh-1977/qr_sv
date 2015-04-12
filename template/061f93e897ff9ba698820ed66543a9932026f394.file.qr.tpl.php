@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2015-04-12 21:30:25
+<?php /* Smarty version Smarty-3.1.19, created on 2015-04-12 21:53:44
          compiled from "/home/htdocs/module/qr/qr.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20118584145521267c994c88-77111679%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '061f93e897ff9ba698820ed66543a9932026f394' => 
     array (
       0 => '/home/htdocs/module/qr/qr.tpl',
-      1 => 1428841767,
+      1 => 1428843222,
       2 => 'file',
     ),
   ),
@@ -54,7 +54,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 		
 	<div class="row-fluid">
-		<div class="span8 spanCenter">
+		<div class="span4 spanCenter">
 			<button class="toolbtn btn_green" id="qr_add"><i class="icon-plus icon-white"></i>追加する</button>
 			<div class="clear"></div>
 			<div class="table-box">

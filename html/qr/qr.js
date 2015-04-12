@@ -74,8 +74,8 @@ $(function(){
 			title:'コード追加',
 			autoOpen:true,
 			modal:true,
-			width:600,
-			height:400,
+			width:300,
+			height:200,
 			buttons:{
 				"OK":function(){
 					if ($('#code').val().match(/[^0-9A-Za-z]+/)){
@@ -116,12 +116,12 @@ $(function(){
 	//
 	//	利用者情報変更
 	//
-	$(document).on("click", '#s_list tr', function() {
+	$(document).on("click", '#s_list tbody tr', function() {
 
 		var param = { 
 			x:'qr', 
 			ctrl:'reset',
-			code:$(tr).attr('code'),
+			code:$(this).attr('code'),
 		};
 
 		DbAccess('#db_msg', param, 
@@ -155,8 +155,8 @@ $(function(){
 		$(dlg).dialog({
 			autoOpen:true,
 			modal:true,
-			width:400,
-			height:350,
+			width:300,
+			height:300,
 			buttons:{
 				"OK":function(){
 					$(this).dialog("close");

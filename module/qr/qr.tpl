@@ -33,7 +33,7 @@
 	</div>
 		
 	<div class="row-fluid">
-		<div class="span8 spanCenter">
+		<div class="span4 spanCenter">
 			<button class="toolbtn btn_green" id="qr_add"><i class="icon-plus icon-white"></i>追加する</button>
 			<div class="clear"></div>
 			<div class="table-box">
