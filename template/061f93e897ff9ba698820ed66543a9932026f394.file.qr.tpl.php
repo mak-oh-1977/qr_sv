@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2015-04-12 21:53:44
+<?php /* Smarty version Smarty-3.1.19, created on 2015-04-12 22:04:29
          compiled from "/home/htdocs/module/qr/qr.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20118584145521267c994c88-77111679%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '061f93e897ff9ba698820ed66543a9932026f394' => 
     array (
       0 => '/home/htdocs/module/qr/qr.tpl',
-      1 => 1428843222,
+      1 => 1428843863,
       2 => 'file',
     ),
   ),
@@ -49,7 +49,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 
 	<div class="hero-unit">
-		<h2>QRコードデモ</h2>
+		<h2>QRコードデモ</h2><img id="hp"></img>
+
 		<p><a href="app/SampleQR.apk">アプリのインストール</a></p>
 	</div>
 		

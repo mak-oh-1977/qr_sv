@@ -28,7 +28,8 @@
 
 
 	<div class="hero-unit">
-		<h2>QRコードデモ</h2>
+		<h2>QRコードデモ</h2><img id="hp"></img>
+
 		<p><a href="app/SampleQR.apk">アプリのインストール</a></p>
 	</div>
 		
