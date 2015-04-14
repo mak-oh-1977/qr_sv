@@ -114,6 +114,29 @@ $(function(){
 			}
 		});
 	});
+	$('#codeadd').on('click', '.modal-footer .btn-primary', function(){
+		if ($('#code').val().match(/[^0-9A-Za-z]+/)){
+			alertDlg("入力エラー", "コードは半角英数のみです。");
+			return;
+		}
+
+		var param = { 
+			x:'qr', 
+			ctrl:'add',
+			code:$('#code').val(),
+		};
+
+		DbAccess('#db_msg', param, 
+			function(ret){
+				updateList();
+			},
+			function(ret){
+				alertDlg("エラー", ret['info']);
+			}
+
+		);
+
+	});
 
 	//------------------------------------------------------------------------
 	//
