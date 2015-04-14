@@ -5,15 +5,6 @@ $(function(){
 	//
 	$(document).ready(function(){
 
-		$('li.dropdown').hover(
-				function(){
-					$(this).find('dl').slideDown(200);
-				},
-				function(){
-					$(this).find('dl').hide();
-				}
-		);
-		$('dl.dropdown-menu').hide();
 
 	});
 	//////////////////////////////////////////////////////////////////////////
@@ -185,51 +176,4 @@ function alertDlg(title_txt, msg, ok_cb)
 
 
 
-
-//////////////////////////////////////////////////////////////////////////
-//
-//	数値３桁カンマ区切り
-//
-function addFigure(str) {
-    var num = new String(str).replace(/,/g, "");
-    while(num != (num = num.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
-    return num;
-}
-
-
-//////////////////////////////////////////////////////////////////////////
-//
-//	Fileダウンロード実装
-//
-//	module:送信先モジュール名
-//	values:パラメータ配列
-//
-function downloadFile(module, ctrl, values)
-{
-	$('#downloadFile').remove();
-	var p = $('<div/>', {id :'downloadFile'});
-
-	$('<iframe/>', {name:'downloadFile',})
-		.hide()
-		.appendTo(p);
-
-	$(p).appendTo(document.body);
-
-	var f;
-	f = $('<form/>', {action: 'index.php', method: 'post', target: 'downloadFile'})
-		.append($('<input/>', {type:'hidden', name:'x', value:module}))
-		.append($('<input/>', {type:'hidden', name:'ctrl', value:ctrl}));
-
-	if (values !== undefined)
-	{
-		for(var i in values)
-		{
-			var v = values[i];
-			$(f).append($('<input/>', {type:'hidden', name:v.name, value:v.value}))
-		}
-	}
-
-	$(f).appendTo(p)
-		.submit();
-};
 

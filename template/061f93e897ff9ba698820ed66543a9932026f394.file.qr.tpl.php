@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2015-04-12 22:04:29
+<?php /* Smarty version Smarty-3.1.19, created on 2015-04-13 16:03:21
          compiled from "/home/htdocs/module/qr/qr.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20118584145521267c994c88-77111679%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '061f93e897ff9ba698820ed66543a9932026f394' => 
     array (
       0 => '/home/htdocs/module/qr/qr.tpl',
-      1 => 1428843863,
+      1 => 1428908414,
       2 => 'file',
     ),
   ),
@@ -27,52 +27,98 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<script src="js/jquery.js"></script>
-<script src="js/jquery-ui.js"></script>
-
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 <script src="js/common.js"></script>
 <script src="qr/qr.js"></script>
 
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link href="css/reset.css" rel="stylesheet">
-<link href="css/custom-theme/jquery-ui.css" rel="stylesheet" />
-<link href="css/common.css" rel="stylesheet">
-<link href="qr/qr.css" rel="stylesheet">
-
-
+<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cerulean/bootstrap.min.css" rel="stylesheet">
 
 
 </head>
 
 <body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">QR code demo</a>
+			</div>
+		</div>
+	</nav>
 
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+			<div class="col-sm-8">
+				<h1>QRコードデモ</h1>
+			</div>
+			<div class="col-sm-4">
+				<img id="hp"></img>
+			</div>
+			<h3><a href="app/SampleQR.apk">アプリのインストール</a><h3>
+		</div>
 
-	<div class="hero-unit">
-		<h2>QRコードデモ</h2><img id="hp"></img>
-
-		<p><a href="app/SampleQR.apk">アプリのインストール</a></p>
-	</div>
 		
-	<div class="row-fluid">
-		<div class="span4 spanCenter">
-			<button class="toolbtn btn_green" id="qr_add"><i class="icon-plus icon-white"></i>追加する</button>
-			<div class="clear"></div>
-			<div class="table-box">
-				<table class="table table-bordered data-list" id="s_list">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<button class="btn btn-success" data-toggle="modal" data-target="#codeadd">追加する</button>
+				<div class="clear"></div>
+				<table class="table table-striped table-hover" id="s_list">
 					<thead>
 						<tr>
 							<th>コード</th>
+							<th>QR</th>
 							<th>状態</th>
+							<th>リセット</th>
 						</tr>
 					</thead>
 					<tbody>
 					</tbody>
 				</table>
 			</div>
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 
+
+	<div class="modal fade" id="codeadd" tabindex="-1">
+		<div class="modal-dialog">
+
+			<!-- 3.モーダルのコンテンツ -->
+			<div class="modal-content">
+				<!-- 4.モーダルのヘッダ -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modal-label">コード追加</h4>
+				</div>
+				<!-- 5.モーダルのボディ -->
+				<div class="modal-body">
+				<table>
+					<tr>
+						<td class="td-r">コード</td>
+						<td><input type="text" id="code" maxlength="20"></td>
+					</tr>
+				</table>
+				</div>
+				<!-- 6.モーダルのフッタ -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div id="qr_dlg" title="コード追加" style="display:none">
 		<input type="hidden" id="staff_id">
@@ -85,6 +131,29 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		</table>
 	</div>
 
+	<div class="modal fade" id="qrdisp" tabindex="-1">
+		<div class="modal-dialog">
+
+			<!-- 3.モーダルのコンテンツ -->
+			<div class="modal-content">
+				<!-- 4.モーダルのヘッダ -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modal-label">QRコード</h4>
+				</div>
+				<!-- 5.モーダルのボディ -->
+				<div class="modal-body">
+				<img id="qrimg"></img>
+				</div>
+				<!-- 6.モーダルのフッタ -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html> 
 <?php }} ?>

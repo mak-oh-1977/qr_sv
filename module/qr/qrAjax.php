@@ -57,8 +57,7 @@ select
 	code,
 	case status
 		when 0 then '読んでません'
-		when 1 then '読みました'
-		else '???'
+		else status || '回'
 	end as status
 from qr 
 SQL_END;
@@ -142,7 +141,7 @@ SQL_END;
 			$dbObj->beginTransaction();
 
 			$sql = <<<SQL_END
-update qr set status=1 where code=?
+update qr set status=status+1 where code=?
 SQL_END;
 
 			$res = $dbObj->execute($sql, array($code));

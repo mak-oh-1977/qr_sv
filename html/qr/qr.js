@@ -42,9 +42,13 @@ $(function(){
 						code: row['code'],
 					});
 
-					$('<td>', {text: row['code']}).append('<button class="list_btn qr">QR</button>')
+					$('<td>', {text: row['code']})
+							.appendTo(r);
+					$('<td>').append('<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#qrdisp">表示</button>')
 							.appendTo(r);
 					$('<td>', {text: row['status']})
+							.appendTo(r);
+					$('<td>').append('<button class="btn btn-sm btn-info" id="reset">リセット</button>')
 							.appendTo(r);
 
 					$('#s_list tbody').append(r);
@@ -119,12 +123,13 @@ $(function(){
 	//
 	//	利用者情報変更
 	//
-	$(document).on("click", '#s_list tbody tr', function() {
+	$(document).on("click", '#s_list tbody #reset', function() {
 
+		var tr = $(this).closest('tr');
 		var param = { 
 			x:'qr', 
 			ctrl:'reset',
-			code:$(this).attr('code'),
+			code:$(tr).attr('code'),
 		};
 
 		DbAccess('#db_msg', param, 
@@ -138,6 +143,23 @@ $(function(){
 		);
 	});
 
+    // ダイアログ表示前にJavaScriptで操作する
+	$('#qrdisp').on('show.bs.modal', function (event) {
+		var button = $(event.relatedTarget);
+		var tr = $(button).closest('tr');
+		var code = $(tr).attr('code');
+		var src = encodeURIComponent(location.href + "index.php?x=qr&ctrl=read&code=" + code);
+		$("#qrimg").attr('src', "http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=" + src);
+//		var recipient = button.data('whatever');
+//		var modal = $(this);
+//		modal.find('.modal-body .recipient').text(recipient);
+		//modal.find('.modal-body input').val(recipient);
+	});
+
+	$('#qrdisp').on('click', '.modal-footer .btn-default', function(){
+		updateList();
+
+	});
 
 	//////////////////////////////////////////////////////////////////////////
 	//
@@ -145,12 +167,12 @@ $(function(){
 	//
 	$(document).on("click", '#s_list button', function() {
 
+/*
 		var tr = $(this).closest('tr');
 		var code = $(tr).attr('code');
 
-		var src = encodeURIComponent(location.href + "index.php?x=qr&ctrl=read&code=" + code);
 		var dlg = $('<div/>', {title:'QRコード'})
-			.append($('<img/>', {src:"http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=" + src}));
+			.append($('<img/>', {src:}));
 			
 		$(dlg).appendTo(document.body);
 
@@ -168,7 +190,7 @@ $(function(){
 				},
 			}
 		});
-
+*/
 	});
 
 
